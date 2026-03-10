@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import LandingPage from "../../app/page";
+import CTASection from "../../components/cta-section";
+import FAQSection from "../../components/faq-section";
+import FooterSection from "../../components/footer-section";
+---
+
+<BaseLayout
+  title="Gymple - Sistema de Gestión Inteligente para Gimnasios"
+  description="Automatiza la cobranza, gestiona socios y envía recordatorios por WhatsApp. El software todo en uno para modernizar tu gimnasio."
+>
+  <LandingPage client:load />
+  <CTASection client:load />
+  <FAQSection client:load />
+  <FooterSection client:load />
+</BaseLayout>
+
