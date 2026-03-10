@@ -4,34 +4,115 @@ import "../styles/global.css";
 export interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
+  ogImage?: string;
+  faqSchema?: { question: string; answer: string }[];
 }
 
+const SITE_URL = Astro.site?.toString() ?? "https://gymple.online";
+
 const {
-  title = "Gymple - Sistema de Gestión Inteligente para Gimnasios",
-  description = "Automatiza la cobranza, gestiona socios y envía recordatorios por WhatsApp. El software todo en uno para modernizar tu gimnasio.",
+  title = "Gymple - Software para Gimnasios | Sistema de Gestión Inteligente",
+  description = "Software para gimnasios que automatiza cobranzas por WhatsApp, gestiona socios, membresías, rutinas y finanzas. El sistema todo en uno para modernizar tu gimnasio.",
+  keywords = "software para gimnasios, sistema de gestión para gimnasios, programa para administrar gimnasios, control de socios gimnasio, cobranza automática gimnasio",
+  ogImage = "/og-image.jpg",
+  faqSchema = [],
 } = Astro.props;
+
+const canonicalUrl = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.pathname;
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Gymple",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description: "Software de gestión para gimnasios con cobranza automática por WhatsApp, control de socios, membresías, rutinas y finanzas.",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "ARS",
+    description: "14 días de prueba gratis",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    ratingCount: "7",
+  },
+};
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Gymple",
+  url: SITE_URL,
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "hola@gymple.online",
+    contactType: "sales",
+  },
+};
+
+const faqJsonLd =
+  faqSchema.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqSchema.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
 ---
 
 <!doctype html>
-<html lang="es" class="antialiased">
+<html lang="es" class="antialiased scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
     <meta name="generator" content="Astro" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <link rel="canonical" href={Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.pathname} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, SITE_URL).toString()} />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Gymple" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gymple" />
+    <meta name="twitter:creator" content="@gymple" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, SITE_URL).toString()} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400&display=swap"
     />
+
+    <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
   </head>
   <body class="font-sans antialiased">
     <slot />
   </body>
 </html>
-

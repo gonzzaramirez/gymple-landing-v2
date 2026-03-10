@@ -1,0 +1,61 @@
+---
+const points = [
+  {
+    title: "Multi-tenant aislado",
+    description: "Cada gimnasio tiene su propio entorno con URL personalizada. Tus datos nunca se mezclan con los de otro negocio.",
+    iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+  },
+  {
+    title: "Filtrado inteligente por período",
+    description: "Filtrá todos los reportes por día, semana, mes o rango personalizado para tomar decisiones con datos reales.",
+    iconPath: "M22 3H2l8 9.46V19l4 2v-8.54L22 3z",
+  },
+  {
+    title: "Backups y encriptación automática",
+    description: "Respaldos diarios automáticos y encriptación de datos sensibles. Tu información siempre segura y disponible.",
+    iconPath: "M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4",
+  },
+  {
+    title: "Acceso desde cualquier dispositivo",
+    description: "100% en la nube. Accedé desde tu computadora, tablet o celular sin instalar nada. Funciona 24/7.",
+    iconPath: "M12 18h.01 M7 21h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z",
+  },
+];
+---
+
+<section
+  class="w-full py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center"
+  aria-labelledby="tech-heading"
+>
+  <div class="w-full max-w-[700px] px-4 sm:px-6 mb-8 sm:mb-12 flex flex-col justify-start items-center gap-3 sm:gap-4">
+    <div class="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-[rgba(2,6,23,0.08)]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#37322F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="text-center flex justify-center flex-col text-[#37322F] text-xs font-medium leading-3 font-sans">
+        Tecnología
+      </span>
+    </div>
+    <h2
+      id="tech-heading"
+      class="w-full text-center flex justify-center flex-col text-[#49423D] text-3xl md:text-4xl font-semibold leading-[1.1] md:leading-tight font-sans tracking-tight"
+    >
+      Tecnología moderna, segura y en la nube
+    </h2>
+    <p class="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
+      Infraestructura pensada para que tu gimnasio funcione sin interrupciones.
+    </p>
+  </div>
+
+  <div class="w-full max-w-[1000px] px-4 sm:px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {points.map((point) => (
+      <article class="flex-1 p-6 bg-white border border-[#E0DEDB] rounded-3xl flex flex-col gap-4">
+        <div class="w-12 h-12 bg-[#F7F5F3] rounded-2xl flex items-center justify-center text-[#37322F]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={point.iconPath} /></svg>
+        </div>
+        <div>
+          <h3 class="text-[#49423D] text-base font-semibold mb-2">{point.title}</h3>
+          <p class="text-[#605A57] text-sm leading-relaxed">{point.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,65 @@
+---
+const problems = [
+  {
+    title: "Horas perdidas en administración",
+    description: "Cargar datos manualmente, buscar quién debe y enviar mensajes uno por uno consume tu tiempo más valioso.",
+    iconPath: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm1-13h-2v6l5.25 3.15.75-1.23-4-2.42z",
+  },
+  {
+    title: "Errores en planillas de Excel",
+    description: "Fechas mal cargadas, cuotas que se pierden y datos duplicados que generan conflictos con tus socios.",
+    iconPath: "M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z M14 2v6h6 M8 13h2 M8 17h2 M14 13h2 M14 17h2 M8 9h8",
+  },
+  {
+    title: "Socios que dejan de pagar",
+    description: "Sin recordatorios automáticos, los socios olvidan renovar y tu tasa de morosidad crece mes a mes.",
+    iconPath: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z M12 8v4 M12 16h.01",
+  },
+  {
+    title: "Cero visibilidad de tu negocio",
+    description: "No sabés cuánto facturaste, quién vence hoy ni cómo va tu gimnasio. Decisiones a ciegas.",
+    iconPath: "M3 3v18h18 M18 17V9 M13 17V5 M8 17v-3",
+  },
+];
+---
+
+<section
+  class="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center"
+  aria-labelledby="problems-heading"
+>
+  <div class="self-stretch px-4 sm:px-6 md:px-24 py-8 sm:py-12 md:py-16 border-b border-[rgba(55,50,47,0.12)] flex justify-center items-center gap-6">
+    <div class="w-full max-w-[700px] px-4 sm:px-6 py-4 sm:py-5 flex flex-col justify-start items-center gap-3 sm:gap-4">
+      <div class="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-[rgba(2,6,23,0.08)]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#37322F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <span class="text-center flex justify-center flex-col text-[#37322F] text-xs font-medium leading-3 font-sans">
+          Sin Gymple
+        </span>
+      </div>
+      <h2
+        id="problems-heading"
+        class="w-full text-center flex justify-center flex-col text-[#49423D] text-3xl md:text-4xl font-semibold leading-[1.1] md:leading-tight font-sans tracking-tight"
+      >
+        Los problemas de gestionar tu gimnasio con Excel
+      </h2>
+      <p class="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
+        La administración manual te hace perder tiempo, dinero y clientes.
+      </p>
+    </div>
+  </div>
+
+  <div class="self-stretch px-4 sm:px-8 md:px-16 py-8 sm:py-12 flex justify-center">
+    <div class="w-full max-w-[1000px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {problems.map((problem) => (
+        <article class="flex-1 p-6 bg-white border border-[#E0DEDB] rounded-3xl flex flex-col gap-4">
+          <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={problem.iconPath} /></svg>
+          </div>
+          <div>
+            <h3 class="text-[#49423D] text-base font-semibold mb-2">{problem.title}</h3>
+            <p class="text-[#605A57] text-sm leading-relaxed">{problem.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

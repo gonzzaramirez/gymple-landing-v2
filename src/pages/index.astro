@@ -1,19 +1,43 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+import HeroSection from "../components/HeroSection.astro";
 
-import LandingPage from "../../app/page";
-import CTASection from "../../components/cta-section";
-import FAQSection from "../../components/faq-section";
-import FooterSection from "../../components/footer-section";
+import ProblemsSection from "../components/ProblemsSection.astro";
+import FeaturesGrid from "../components/FeaturesGrid.astro";
+import TechSection from "../components/TechSection.astro";
+import StatsSection from "../components/StatsSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import CtaSection from "../components/CtaSection.astro";
+import FooterSection from "../components/FooterSection.astro";
+import { faqData } from "../data/faq";
 ---
 
 <BaseLayout
-  title="Gymple - Sistema de Gestión Inteligente para Gimnasios"
-  description="Automatiza la cobranza, gestiona socios y envía recordatorios por WhatsApp. El software todo en uno para modernizar tu gimnasio."
+  title="Gymple - Software para Gimnasios | Sistema de Gestión Inteligente"
+  description="Software para gimnasios que automatiza cobranzas por WhatsApp, gestiona socios, membresías, rutinas y finanzas. Probá gratis 14 días."
+  keywords="software para gimnasios, sistema de gestión para gimnasios, programa para administrar gimnasios, control de socios gimnasio, cobranza automática gimnasio, recordatorios WhatsApp gimnasio"
+  faqSchema={faqData}
 >
-  <LandingPage client:load />
-  <CTASection client:load />
-  <FAQSection client:load />
-  <FooterSection client:load />
-</BaseLayout>
+  <div class="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
+    <div class="relative flex flex-col justify-start items-center w-full">
+      <div class="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start">
+        <div class="w-px h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
+        <div class="w-px h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
 
+        <NavBar />
+        <HeroSection />
+     
+   
+        <ProblemsSection />
+      </div>
+    </div>
+
+    <FeaturesGrid />
+    <TechSection />
+    <StatsSection />
+    <CtaSection />
+    <FaqSection />
+    <FooterSection />
+  </div>
+</BaseLayout>

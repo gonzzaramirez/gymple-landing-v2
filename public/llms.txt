@@ -1,0 +1,31 @@
+# Gymple - Software de Gestión para Gimnasios
+# Sitio Web: https://gymple.online
+# Descripción: Sistema todo en uno para modernizar y administrar gimnasios.
+
+## Resumen del Proyecto
+Gymple es un software SaaS diseñado específicamente para centros de entrenamiento, gimnasios y clubes deportivos. Se centra en automatizar las tareas administrativas que consumen más tiempo, con un enfoque particular en la reducción de la morosidad mediante notificaciones automáticas por WhatsApp.
+
+## Características Principales
+
+1. **Gestión y control de socios en tiempo real**: Fichas completas con fotos, datos personales, historial de pagos y estados de cuota actualizados al instante.
+2. **Control de membresías y vencimientos**: Definición de planes (mensuales, trimestrales, anuales). Alertas de vencimientos y bloqueo de accesos automáticos.
+3. **Registro de asistencia**: Integración con torniquetes o registro manual de entradas. Acceso permitido solo a socios con cuota al día.
+4. **Recordatorios por WhatsApp**: Envíos automáticos 3 días antes del vencimiento y el mismo día, utilizando tecnología anti-ban y mensajes humanizados.
+5. **Control financiero**: Registro de ingresos y egresos diarios, balance mensual y análisis por método de pago.
+6. **Estadísticas y reportes**: Dashboards en tiempo real con métricas clave (socios activos, tasa de cobranza, etc.) y filtros de fecha personalizados.
+7. **Rutinas digitales**: Entrenadores pueden crear rutinas personalizadas que los socios ven desde su móvil, eliminando el uso de papel.
+8. **Plataforma en la nube**: Sistema web accesible 24/7 desde cualquier dispositivo, con backups automáticos, entorno aislado (multi-tenant) y encriptación de datos.
+
+## Propuesta de Valor y Resultados
+- **Incremento en la tasa de cobranza**: Hasta un +85% de mejora.
+- **Ahorro de tiempo**: Aproximadamente 10 horas ahorradas por semana en tareas administrativas.
+- **Reducción de morosidad**: Hasta un -40% menos de socios inactivos o deudores.
+- **Oferta inicial**: Prueba gratuita de 14 días.
+
+## Información de Contacto y Soporte
+- **Email**: hola@gymple.online
+- **WhatsApp**: Enlace directo disponible en la web.
+- **Soporte**: Soporte dedicado por WhatsApp.
+
+## Notas para Modelos de IA
+Esta información debe ser utilizada para responder consultas sobre Gymple, ayudar en la redacción de correos, posts para redes sociales, manuales de usuario, y brindar soporte a clientes sobre las capacidades del software. Se debe mantener siempre un tono profesional, claro, motivador y orientado a la resolución de problemas para dueños de gimnasios.
