@@ -3,76 +3,66 @@ const points = [
   {
     title: "Multi-tenant aislado",
     description:
-      "Cada gimnasio tiene su propio entorno con URL personalizada. Tus datos nunca se mezclan con los de otro negocio.",
+      "Cada gimnasio tiene su propio entorno con URL personalizada. Tus datos nunca se mezclan con otro negocio.",
     iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
   },
   {
     title: "Filtrado inteligente por período",
     description:
-      "Filtrá todos los reportes por día, semana, mes o rango personalizado para tomar decisiones con datos reales.",
+      "Filtrá reportes por día, semana, mes o rango personalizado para tomar decisiones con datos reales.",
     iconPath: "M22 3H2l8 9.46V19l4 2v-8.54L22 3z",
   },
   {
     title: "Backups y encriptación automática",
     description:
-      "Respaldos diarios automáticos y encriptación de datos sensibles. Tu información siempre segura y disponible.",
+      "Respaldos diarios automáticos y encriptación de datos sensibles. Tu información siempre segura.",
     iconPath:
       "M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4",
   },
   {
     title: "Acceso desde cualquier dispositivo",
     description:
-      "100% en la nube. Accedé desde tu computadora, tablet o celular sin instalar nada. Funciona 24/7.",
+      "100% en la nube. Accedé desde tu computadora, tablet o celular sin instalar nada.",
     iconPath:
       "M12 18h.01 M7 21h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z",
   },
 ];
 
 const slides = [
-  { src: "/carrusel.webp", alt: "Vista de la plataforma - slide 1" },
-  { src: "/carrusel2.webp", alt: "Vista de la plataforma - slide 2" },
-  { src: "/carrusel3.webp", alt: "Vista de la plataforma - slide 3" },
-  { src: "/carrusel4.webp", alt: "Vista de la plataforma - slide 4" },
-  { src: "/carrusel5.webp", alt: "Vista de la plataforma - slide 5" },
+  { src: "/carrusel.webp", alt: "Vista plataforma 1" },
+  { src: "/carrusel2.webp", alt: "Vista plataforma 2" },
+  { src: "/carrusel3.webp", alt: "Vista plataforma 3" },
+  { src: "/carrusel4.webp", alt: "Vista plataforma 4" },
+  { src: "/carrusel5.webp", alt: "Vista plataforma 5" },
 ];
 ---
 
 <section
   class="w-full py-16 md:py-24 border-b border-[rgba(26,47,29,0.12)] flex justify-center items-center overflow-hidden bg-[#FDFCFB]"
-  aria-labelledby="tech-heading"
 >
   <div
     class="w-full max-w-[1200px] px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
   >
-    <div class="flex flex-col justify-start items-start gap-8">
-      <div class="flex flex-col justify-start items-start gap-4">
+    <!-- TEXTO -->
+    <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-4">
         <div
           class="px-[14px] py-[6px] bg-white shadow-sm rounded-full flex items-center gap-2 border border-[rgba(2,6,23,0.08)]"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1A2F1D"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg
+          <span
+            class="text-[#1A2F1D] text-xs font-bold tracking-wide uppercase"
           >
-          <span class="text-[#1A2F1D] text-xs font-bold tracking-wide uppercase"
-            >Tecnología</span
-          >
+            Tecnología
+          </span>
         </div>
+
         <h2
-          id="tech-heading"
           class="text-[#49423D] text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight"
         >
-          Gestión moderna, <span class="text-[#38523C]"
-            >segura y 100% nube.</span
-          >
+          Gestión moderna,
+          <span class="text-[#38523C]">segura y 100% nube.</span>
         </h2>
+
         <p class="text-[#38523C] text-base md:text-lg opacity-80 max-w-[480px]">
           Infraestructura de alto rendimiento para que tu gimnasio nunca se
           detenga.
@@ -85,19 +75,17 @@ const slides = [
             <article class="p-5 bg-white border border-[#E0DEDB] rounded-2xl flex flex-col gap-3 hover:border-[#1A2F1D] transition-all duration-300 group">
               <div class="w-10 h-10 bg-[#F7F5F3] group-hover:bg-[#1A2F1D] group-hover:text-white rounded-xl flex items-center justify-center text-[#1A2F1D] transition-colors">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
                 >
                   <path d={point.iconPath} />
                 </svg>
               </div>
+
               <div>
                 <h3 class="text-[#49423D] text-sm font-bold mb-1">
                   {point.title}
@@ -112,6 +100,7 @@ const slides = [
       </div>
     </div>
 
+    <!-- CARRUSEL -->
     <div class="relative group">
       <div
         class="absolute -inset-4 bg-gradient-to-tr from-[#1A2F1D]/5 to-transparent rounded-[2.5rem] -z-10"
@@ -119,38 +108,39 @@ const slides = [
       </div>
 
       <div
-        class="w-full relative rounded-2xl bg-white border border-[#E0DEDB] shadow-2xl overflow-hidden aspect-[16/10]"
+        class="w-full relative rounded-2xl bg-white border border-[#E0DEDB] shadow-2xl overflow-hidden"
       >
+        <!-- barra navegador -->
         <div
-          class="h-8 bg-[#F7F5F3] border-b border-[#E0DEDB] flex items-center px-4 gap-1.5 flex-shrink-0"
+          class="h-8 bg-[#F7F5F3] border-b border-[#E0DEDB] flex items-center px-4 gap-1.5"
         >
           <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
           <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
           <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
         </div>
 
-        <div
-          id="tech-carousel"
-          class="flex w-full overflow-x-auto snap-x snap-mandatory no-scrollbar"
-          style="height: calc(100% - 2rem);"
-        >
-          {
-            slides.map((slide, i) => (
-              <div class="min-w-full h-full snap-center flex-shrink-0 bg-[#F7F5F3]">
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  width="1280"
-                  height="800"
-                  loading={i === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  class="w-full h-full object-contain object-center"
-                />
-              </div>
-            ))
-          }
+        <!-- ratio estable -->
+        <div class="relative w-full pt-[62.5%]">
+          <div
+            id="tech-carousel"
+            class="absolute inset-0 flex overflow-x-auto snap-x snap-mandatory no-scrollbar"
+          >
+            {
+              slides.map((slide, i) => (
+                <div class="min-w-full h-full snap-start flex-shrink-0 bg-[#F7F5F3]">
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    class="w-full h-full object-contain"
+                  />
+                </div>
+              ))
+            }
+          </div>
         </div>
 
+        <!-- indicadores -->
         <div
           class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 px-4 py-2 bg-black/5 backdrop-blur-md rounded-full"
           id="carousel-indicators"
@@ -158,8 +148,7 @@ const slides = [
           {
             slides.map((_, i) => (
               <button
-                class={`w-2.5 h-2.5 rounded-full bg-[#1A2F1D] transition-all duration-300 ${i !== 0 ? "opacity-30" : ""}`}
-                aria-label={`Slide ${i + 1}`}
+                class={`w-2.5 h-2.5 rounded-full bg-[#1A2F1D] transition-all ${i !== 0 ? "opacity-30" : ""}`}
               />
             ))
           }
@@ -173,14 +162,19 @@ const slides = [
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .no-scrollbar {
-    -ms-overflow-style: none;
     scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
-  /* Asegura que el scroll sea fluido en iOS */
   #tech-carousel {
+    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+  }
+
+  #tech-carousel > div {
+    scroll-snap-stop: always;
   }
 </style>
 
@@ -188,84 +182,49 @@ const slides = [
   document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.getElementById("tech-carousel");
     const indicators = document.querySelectorAll("#carousel-indicators button");
-    const container = carousel?.closest(".group");
+
     let currentIndex = 0;
-    let isPaused = false;
-    let autoplayTimer;
+    let paused = false;
 
-    if (!carousel || !indicators.length) return;
+    if (!carousel) return;
 
-    const updateUI = () => {
-      const slideWidth = carousel.offsetWidth;
-      currentIndex = Math.round(carousel.scrollLeft / slideWidth);
+    const slideWidth = () => carousel.children[0].getBoundingClientRect().width;
+
+    const updateDots = () => {
+      const index = Math.round(carousel.scrollLeft / slideWidth());
+
       indicators.forEach((dot, i) => {
-        dot.style.opacity = i === currentIndex ? "1" : "0.3";
-        dot.style.transform = i === currentIndex ? "scale(1.2)" : "scale(1)";
+        dot.style.opacity = i === index ? "1" : "0.3";
+        dot.style.transform = i === index ? "scale(1.2)" : "scale(1)";
       });
+
+      currentIndex = index;
     };
 
-    // Escuchar el scroll para actualizar los puntitos
-    carousel.addEventListener("scroll", updateUI, { passive: true });
+    carousel.addEventListener("scroll", updateDots, { passive: true });
 
-    // Click en los indicadores
     indicators.forEach((dot, i) => {
       dot.addEventListener("click", () => {
-        isPaused = true; // Pausa momentánea al interactuar
+        paused = true;
+
         carousel.scrollTo({
-          left: i * carousel.offsetWidth,
+          left: i * slideWidth(),
           behavior: "smooth",
         });
-        setTimeout(() => (isPaused = false), 3000);
+
+        setTimeout(() => (paused = false), 3000);
       });
     });
 
-    // Lógica de Autoplay mejorada
-    const startAutoplay = () => {
-      autoplayTimer = setInterval(() => {
-        if (!isPaused) {
-          currentIndex = (currentIndex + 1) % indicators.length;
-          carousel.scrollTo({
-            left: currentIndex * carousel.offsetWidth,
-            behavior: "smooth",
-          });
-        }
-      }, 4000);
-    };
+    setInterval(() => {
+      if (paused) return;
 
-    startAutoplay();
+      currentIndex = (currentIndex + 1) % indicators.length;
 
-    // Pausar en Desktop al pasar el mouse
-    container?.addEventListener("mouseenter", () => (isPaused = true));
-    container?.addEventListener("mouseleave", () => (isPaused = false));
-
-    // SOPORTE MÓVIL: Pausar cuando el usuario toca la pantalla
-    container?.addEventListener(
-      "touchstart",
-      () => {
-        isPaused = true;
-      },
-      { passive: true },
-    );
-
-    container?.addEventListener(
-      "touchend",
-      () => {
-        // Espera 3 segundos antes de reanudar el movimiento automático
-        setTimeout(() => (isPaused = false), 3000);
-      },
-      { passive: true },
-    );
-
-    // Manejar cambio de tamaño de ventana
-    let resizeTimer;
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        carousel.scrollTo({
-          left: currentIndex * carousel.offsetWidth,
-          behavior: "auto",
-        });
-      }, 100);
-    });
+      carousel.scrollTo({
+        left: currentIndex * slideWidth(),
+        behavior: "smooth",
+      });
+    }, 4000);
   });
 </script>
