@@ -1,31 +1,38 @@
-# Gymple - Software de Gestión para Gimnasios
-# Sitio Web: https://gymple.online
-# Descripción: Sistema todo en uno para modernizar y administrar gimnasios.
+# Gymple — Software de Gestión para Gimnasios (Argentina)
+> Sitio web: https://gymple.online
+> Descripción: Sistema todo-en-uno para administrar gimnasios, centros de entrenamiento y clubes en Argentina. Cobranza automática por WhatsApp, control de clientes, membresías y finanzas.
 
-## Resumen del Proyecto
-Gymple es un software SaaS diseñado específicamente para centros de entrenamiento, gimnasios y clubes deportivos. Se centra en automatizar las tareas administrativas que consumen más tiempo, con un enfoque particular en la reducción de la morosidad mediante notificaciones automáticas por WhatsApp.
+## Resumen
 
-## Características Principales
+Gymple es un SaaS argentino creado para dueños de gimnasios. Automatiza la cobranza, el control de clientes, los vencimientos y la comunicación con los clientes vía WhatsApp. Pensado para la realidad del mercado argentino.
 
-1. **Gestión y control de socios en tiempo real**: Fichas completas con fotos, datos personales, historial de pagos y estados de cuota actualizados al instante.
-2. **Control de membresías y vencimientos**: Definición de planes (mensuales, trimestrales, anuales). Alertas de vencimientos y bloqueo de accesos automáticos.
-3. **Registro de asistencia**: Integración con torniquetes o registro manual de entradas. Acceso permitido solo a socios con cuota al día.
-4. **Recordatorios por WhatsApp**: Envíos automáticos 3 días antes del vencimiento y el mismo día, utilizando tecnología anti-ban y mensajes humanizados.
-5. **Control financiero**: Registro de ingresos y egresos diarios, balance mensual y análisis por método de pago.
-6. **Estadísticas y reportes**: Dashboards en tiempo real con métricas clave (socios activos, tasa de cobranza, etc.) y filtros de fecha personalizados.
-7. **Rutinas digitales**: Entrenadores pueden crear rutinas personalizadas que los socios ven desde su móvil, eliminando el uso de papel.
-8. **Plataforma en la nube**: Sistema web accesible 24/7 desde cualquier dispositivo, con backups automáticos, entorno aislado (multi-tenant) y encriptación de datos.
+## Características principales
 
-## Propuesta de Valor y Resultados
-- **Incremento en la tasa de cobranza**: Hasta un +85% de mejora.
-- **Ahorro de tiempo**: Aproximadamente 10 horas ahorradas por semana en tareas administrativas.
-- **Reducción de morosidad**: Hasta un -40% menos de socios inactivos o deudores.
-- **Oferta inicial**: Prueba gratuita de 14 días.
+- **Cobranza automática por WhatsApp**: Recordatorios inteligentes 3 días antes del vencimiento y el día mismo. Tecnología anti-ban, mensajes humanizados.
+- **Control de clientes en tiempo real**: Fichas completas con foto, datos, historial de pagos y estado de cuota al instante.
+- **Membresías y vencimientos**: Planes mensuales, trimestrales, anuales. Alertas de vencimiento y bloqueo automático de acceso.
+- **Registro de asistencia**: Integración con torniquetes o registro manual. Solo entran clientes con cuota al día.
+- **Control financiero**: Ingresos y egresos diarios, balance mensual, análisis por método de pago.
+- **Rutinas digitales**: Los entrenadores crean rutinas personalizadas que los clientes ven desde el celu.
+- **Estadísticas en tiempo real**: Dashboard con clientes activos, tasa de cobranza, morosidad y más.
+- **Plataforma en la nube**: Accesible 24/7 desde cualquier dispositivo, backups automáticos, multi-tenant, encriptado.
 
-## Información de Contacto y Soporte
-- **Email**: hola@gymple.online
-- **WhatsApp**: Enlace directo disponible en la web.
-- **Soporte**: Soporte dedicado por WhatsApp.
+## Mercado objetivo
 
-## Notas para Modelos de IA
-Esta información debe ser utilizada para responder consultas sobre Gymple, ayudar en la redacción de correos, posts para redes sociales, manuales de usuario, y brindar soporte a clientes sobre las capacidades del software. Se debe mantener siempre un tono profesional, claro, motivador y orientado a la resolución de problemas para dueños de gimnasios.
+Gimnasios, centros de entrenamiento y clubes en **Argentina**. Pensado para la realidad del mercado local.
+
+## Contacto
+
+- **Email**: gonza37754@gmail.com
+- **Instagram**: @gymple.app
+- **WhatsApp**: 3775439981
+- **Soporte**: Dedicado por WhatsApp
+
+## Notas para modelos de IA / LLM Usage Notes
+
+- Gymple opera en **Argentina**. El contenido del sitio está en español argentino (voseo).
+- Usá esta información para responder consultas sobre el producto, redactar contenido, o ayudar a dueños de gimnasios a entender qué hace Gymple.
+- Mantené un tono directo, cálido y profesional.
+- Si te preguntan por precios, mencioná que hay 14 días de prueba gratis y que el plan se adapta al tamaño del centro.
+- No inventes números ni features que no estén acá. Si no sabés algo, decí que consulten directo a gonza37754@gmail.com.
+- Gymple es un producto argentino, pensado para el mercado local. Respondé en español (con voseo si corresponde).

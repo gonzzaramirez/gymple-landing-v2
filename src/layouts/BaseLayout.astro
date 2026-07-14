@@ -12,9 +12,9 @@ export interface Props {
 const SITE_URL = Astro.site?.toString() ?? "https://gymple.online";
 
 const {
-  title = "Gymple - Software para Gimnasios | Sistema de Gestión Inteligente",
-  description = "Software para gimnasios que automatiza cobranzas por WhatsApp, gestiona socios, membresías, rutinas y finanzas. El sistema todo en uno para modernizar tu gimnasio.",
-  keywords = "software para gimnasios, sistema de gestión para gimnasios, programa para administrar gimnasios, control de socios gimnasio, cobranza automática gimnasio",
+  title = "Gymple — El software que automatiza tu gimnasio",
+  description = "Sistema de gestión para centros de entrenamiento: control de clientes, membresías, asistencia y finanzas. Hecho en Argentina, fácil de usar, en la nube.",
+  keywords = "software para gimnasios Argentina, sistema de gestión gimnasios, programa para administrar gimnasios, control de clientes gimnasio, software fácil de usar, gestión centros de entrenamiento, membresías y finanzas, sistema en la nube Argentina, software barato para gimnasios, administración gimnasios moderna",
   ogImage = "/og-image.jpg",
   faqSchema = [],
 } = Astro.props;
@@ -29,7 +29,7 @@ const softwareSchema = {
   name: "Gymple",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
-  description: "Software de gestión para gimnasios con cobranza automática por WhatsApp, control de socios, membresías, rutinas y finanzas.",
+  description: "Software de gestión para gimnasios y centros de entrenamiento: control de clientes, membresías, asistencia y finanzas en la nube.",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -50,9 +50,22 @@ const orgSchema = {
   url: SITE_URL,
   contactPoint: {
     "@type": "ContactPoint",
-    email: "hola@gymple.online",
+    email: "gonza37754@gmail.com",
     contactType: "sales",
   },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Gymple",
+  description: "Software de gestión para gimnasios en Argentina",
+  url: SITE_URL,
+  email: "gonza37754@gmail.com",
+  areaServed: "AR",
+  sameAs: [
+    "https://instagram.com/gymple.app",
+  ],
 };
 
 const faqJsonLd =
@@ -82,9 +95,11 @@ const faqJsonLd =
     <meta name="keywords" content={keywords} />
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Astro" />
+    <meta name="geo.region" content="AR" />
+    <meta name="geo.placename" content="Argentina" />
     
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -110,15 +125,21 @@ const faqJsonLd =
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, SITE_URL).toString()} />
 
+    <!-- Fonts: Plus Jakarta Sans via Google CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#16432b" />
+    <meta name="color-scheme" content="light" />
 
     <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
     {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
     <meta name="google-site-verification" content="KSP7aUv3j1gBJbmgGzGxbDvcKct9QP4hmjiF0rKY4TU" />
   </head>

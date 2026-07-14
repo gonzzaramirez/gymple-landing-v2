@@ -1,43 +1,38 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import NavBar from "../components/NavBar.astro";
-import HeroSection from "../components/HeroSection.astro";
-
-import ProblemsSection from "../components/ProblemsSection.astro";
-import FeaturesGrid from "../components/FeaturesGrid.astro";
-import TechSection from "../components/TechSection.astro";
-import StatsSection from "../components/StatsSection.astro";
-import FaqSection from "../components/FaqSection.astro";
-import CtaSection from "../components/CtaSection.astro";
-import FooterSection from "../components/FooterSection.astro";
+import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
+import { Marquee } from "../components/Marquee";
+import { Problems } from "../components/Problems";
+import { Features } from "../components/Features";
+import { PlatformSection } from "../components/PlatformSection";
+import { BusinessModels } from "../components/BusinessModels";
+import { ClientsCarousel } from "../components/ClientsCarousel";
+import { Stats } from "../components/Stats";
+import { Faq } from "../components/Faq";
+import { Cta } from "../components/Cta";
+import { Footer } from "../components/Footer";
 import { faqData } from "../data/faq";
 ---
 
 <BaseLayout
-  title="Gymple - Software para Gimnasios | Sistema de Gestión Inteligente"
-  description="Software para gimnasios que automatiza cobranzas por WhatsApp, gestiona socios, membresías, rutinas y finanzas. Probá gratis 14 días."
-  keywords="software para gimnasios, sistema de gestión para gimnasios, programa para administrar gimnasios, control de socios gimnasio, cobranza automática gimnasio, recordatorios WhatsApp gimnasio"
+  title="Gymple. El software que automatiza tu gimnasio."
+  description="Sistema de gestión para centros de entrenamiento: control de clientes, membresías, asistencia y finanzas. Hecho en Argentina, fácil de usar, en la nube."
+  keywords="software para gimnasios Argentina, sistema de gestión gimnasios, programa para administrar gimnasios, control de clientes gimnasio, software fácil de usar, gestión centros de entrenamiento, membresías y finanzas, sistema en la nube Argentina, software barato para gimnasios, administración gimnasios moderna"
   faqSchema={faqData}
 >
-  <div class="w-full min-h-screen relative bg-[#F7F5F3] overflow-x-hidden flex flex-col justify-start items-center">
-    <div class="relative flex flex-col justify-start items-center w-full">
-      <div class="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start">
-        <div class="w-px h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(26,47,29,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
-        <div class="w-px h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(26,47,29,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
-
-      
-        <HeroSection />
-     
-   
-        <ProblemsSection />
-      </div>
-    </div>
-
-    <FeaturesGrid />
-    <TechSection />
-    <StatsSection />
-    <CtaSection />
-    <FaqSection />
-    <FooterSection />
-  </div>
+  <main class="overflow-x-hidden">
+    <Navbar client:load />
+    <Hero client:load />
+    <Marquee client:load />
+    <Problems client:load />
+    <Features client:load />
+    <PlatformSection client:load />
+    <BusinessModels client:load />
+    <ClientsCarousel client:load />
+    <Stats client:load />
+    <Faq client:load />
+    <Cta client:load />
+    <Footer />
+  </main>
 </BaseLayout>
