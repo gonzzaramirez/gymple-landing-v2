@@ -130,7 +130,7 @@ export function BusinessModels() {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
             <img
-              src={`/${model.id}.png`}
+              src={`/${model.id}.webp`}
               alt={`Gymple para ${model.label.toLowerCase()}`}
               className="h-auto w-full rounded-2xl"
             />

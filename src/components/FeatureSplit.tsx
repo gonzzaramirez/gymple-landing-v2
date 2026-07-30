@@ -19,7 +19,7 @@ export function FeatureSplit({
   description,
   bullets,
   reverse = false,
-  image = "/hero2.png",
+  image = "/hero2.webp",
 }: FeatureSplitProps) {
   return (
     <section className="mx-auto max-w-6xl px-4 py-8 md:py-12">

@@ -88,7 +88,7 @@ export function Hero() {
           >
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-accent/20 to-accent/5 blur-2xl" />
             <img
-              src="/hero.png"
+                src="/hero.webp"
               alt="Gymple"
               className="relative h-auto w-full"
             />
