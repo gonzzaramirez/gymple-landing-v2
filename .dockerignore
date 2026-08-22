@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.agents
+.atl
+.astro
+.vscode
+tests
+.env*

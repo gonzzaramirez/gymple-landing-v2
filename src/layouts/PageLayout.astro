@@ -1,0 +1,52 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const year = new Date().getFullYear();
+
+const navLinks = [
+  { label: "Inicio", href: "/" },
+  { label: "Sobre nosotros", href: "/about" },
+  { label: "Contacto", href: "/contact" },
+  { label: "Privacidad", href: "/privacy" },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="flex min-h-screen flex-col px-4 py-8 md:py-10">
+    <div class="mx-auto w-full max-w-3xl">
+      <header>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 font-heading text-lg font-extrabold text-foreground"
+        >
+          <img src="/logo.png" alt="Gymple" width={32} height={32} class="size-8 rounded-lg" />
+          Gymple
+        </a>
+      </header>
+
+      <main class="mt-8 rounded-[2rem] bg-secondary px-6 py-12 md:px-12">
+        <slot />
+      </main>
+
+      <footer class="mt-8 flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
+        <p>© {year} Gymple. Todos los derechos reservados.</p>
+        <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+          {
+            navLinks.map((link) => (
+              <a href={link.href} class="transition-colors hover:text-foreground">
+                {link.label}
+              </a>
+            ))
+          }
+        </nav>
+      </footer>
+    </div>
+  </div>
+</BaseLayout>

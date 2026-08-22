@@ -6,6 +6,7 @@ export interface Props {
   description?: string;
   keywords?: string;
   ogImage?: string;
+  robots?: string;
   faqSchema?: { question: string; answer: string }[];
 }
 
@@ -16,6 +17,7 @@ const {
   description = "Sistema de gestión para centros de entrenamiento: control de clientes, membresías, asistencia y finanzas. Hecho en Argentina, fácil de usar, en la nube.",
   keywords = "software para gimnasios Argentina, sistema de gestión gimnasios, programa para administrar gimnasios, control de clientes gimnasio, software fácil de usar, gestión centros de entrenamiento, membresías y finanzas, sistema en la nube Argentina, software barato para gimnasios, administración gimnasios moderna",
   ogImage = "/og-image.jpg",
+  robots = "index, follow",
   faqSchema = [],
 } = Astro.props;
 
@@ -48,10 +50,21 @@ const orgSchema = {
   "@type": "Organization",
   name: "Gymple",
   url: SITE_URL,
+  email: "gonza37754@gmail.com",
+  sameAs: [
+    "https://www.instagram.com/gymple.app/",
+    "https://www.linkedin.com/in/gonzzaramirez/",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "AR",
+  },
   contactPoint: {
     "@type": "ContactPoint",
     email: "gonza37754@gmail.com",
+    telephone: "+54 9 3775 439981",
     contactType: "sales",
+    availableLanguage: ["es"],
   },
 };
 
@@ -93,7 +106,7 @@ const faqJsonLd =
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta name="generator" content="Astro" />
     <meta name="geo.region" content="AR" />
     <meta name="geo.placename" content="Argentina" />

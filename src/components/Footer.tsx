@@ -21,9 +21,11 @@ const groups = [
     title: 'Empresa',
     links: [
       { label: 'Contacto', href: '#contacto' },
+      { label: 'Sobre nosotros', href: '/about' },
       { label: 'WhatsApp', href: 'https://wa.me/543775439981' },
       { label: 'Instagram', href: 'https://www.instagram.com/gymple.app/' },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gonzzaramirez/?skipRedirect=true' },
+      { label: 'Privacidad', href: '/privacy' },
     ],
   },
 ]
