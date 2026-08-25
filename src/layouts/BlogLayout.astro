@@ -1,0 +1,248 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+export interface BreadcrumbItem {
+  name: string;
+  href?: string;
+}
+
+export interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  pubDate?: Date;
+  author?: string;
+  faq?: { question: string; answer: string }[];
+  breadcrumb?: BreadcrumbItem[];
+  schema?: "article" | "service";
+  serviceName?: string;
+}
+
+const {
+  title,
+  description,
+  ogImage = "/hero.webp",
+  pubDate,
+  author = "Gymple",
+  faq = [],
+  breadcrumb,
+  schema = "article",
+  serviceName = "Gymple",
+} = Astro.props;
+
+const SITE_URL = Astro.site?.toString() ?? "https://gymple.online";
+const pathname = Astro.url.pathname;
+
+const trail: BreadcrumbItem[] =
+  breadcrumb ?? [
+    { name: "Inicio", href: "/" },
+    { name: "Recursos", href: "/recursos" },
+    { name: title },
+  ];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: trail.map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: item.name,
+    item: item.href
+      ? new URL(item.href, SITE_URL).toString()
+      : new URL(pathname, SITE_URL).toString(),
+  })),
+};
+
+const articleSchema =
+  schema === "article"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        datePublished: pubDate?.toISOString() ?? new Date().toISOString(),
+        dateModified: pubDate?.toISOString() ?? new Date().toISOString(),
+        author: { "@type": "Organization", name: author },
+        publisher: {
+          "@type": "Organization",
+          name: "Gymple",
+          url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: new URL("/logo.png", SITE_URL).toString(),
+          },
+        },
+        image: new URL(ogImage, SITE_URL).toString(),
+        mainEntityOfPage: new URL(pathname, SITE_URL).toString(),
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: `${serviceName} para ${title}`,
+        serviceType: "Software de gestión para gimnasios y centros de entrenamiento",
+        description,
+        url: new URL(pathname, SITE_URL).toString(),
+        provider: { "@type": "Organization", name: "Gymple", url: SITE_URL },
+        areaServed: title,
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "ARS",
+          description: "14 días de prueba gratis",
+        },
+      };
+
+const year = new Date().getFullYear();
+
+const navLinks = [
+  { label: "Inicio", href: "/" },
+  { label: "Sobre nosotros", href: "/about" },
+  { label: "Contacto", href: "/contact" },
+  { label: "Privacidad", href: "/privacy" },
+];
+
+const canonical = new URL(pathname, SITE_URL).toString();
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage} faqSchema={faq}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <div class="flex min-h-screen flex-col px-4 py-8 md:py-10">
+    <div class="mx-auto w-full max-w-3xl">
+      <header>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 font-heading text-lg font-extrabold text-foreground"
+        >
+          <img src="/logo.png" alt="Gymple" width={32} height={32} class="size-8 rounded-lg" />
+          Gymple
+        </a>
+      </header>
+
+      <main class="mt-8 rounded-[2rem] bg-secondary px-6 py-12 md:px-12">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm text-muted-foreground">
+          <ol class="flex flex-wrap items-center gap-2">
+            {
+              trail.map((item, i) => (
+                <li class="flex items-center gap-2">
+                  {item.href ? (
+                    <a href={item.href} class="transition-colors hover:text-foreground">
+                      {item.name}
+                    </a>
+                  ) : (
+                    <span aria-current="page" class="text-foreground">
+                      {item.name}
+                    </span>
+                  )}
+                  {i < trail.length - 1 && (
+                    <span aria-hidden="true" class="text-muted-foreground/60">
+                      /
+                    </span>
+                  )}
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+
+        <slot />
+      </main>
+
+      <footer class="mt-8 flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
+        <p>© {year} Gymple. Todos los derechos reservados.</p>
+        <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+          {
+            navLinks.map((link) => (
+              <a href={link.href} class="transition-colors hover:text-foreground">
+                {link.label}
+              </a>
+            ))
+          }
+        </nav>
+      </footer>
+    </div>
+  </div>
+
+  <style is:global>
+    .article-content {
+      color: oklch(0.32 0.03 155);
+      line-height: 1.75;
+    }
+    .article-content > * + * {
+      margin-top: 1.25rem;
+    }
+    .article-content h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 2.5rem;
+    }
+    .article-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-top: 2rem;
+    }
+    .article-content p {
+      color: oklch(0.4 0.02 150);
+    }
+    .article-content a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .article-content ul {
+      list-style: disc;
+      padding-left: 1.4rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .article-content ol {
+      list-style: decimal;
+      padding-left: 1.4rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .article-content blockquote {
+      border-left: 4px solid oklch(0.86 0.16 130);
+      padding-left: 1rem;
+      color: var(--color-muted-foreground);
+      font-style: italic;
+    }
+    .article-content strong {
+      font-weight: 700;
+      color: var(--color-foreground);
+    }
+    .article-content code {
+      background: var(--color-muted);
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.4rem;
+      font-size: 0.9em;
+      font-family: var(--font-mono);
+    }
+    .article-content hr {
+      border-color: var(--color-border);
+    }
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      margin-top: 1.5rem;
+    }
+    .article-content th {
+      text-align: left;
+      background: var(--color-secondary);
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--color-border);
+      font-weight: 700;
+    }
+    .article-content td {
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--color-border);
+    }
+  </style>
+</BaseLayout>

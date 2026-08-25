@@ -7,6 +7,11 @@ import { Reveal } from '@/components/ui/reveal'
 import { PillButton } from '@/components/ui/pill-button'
 import { cn } from '@/lib/utils'
 
+const MODEL_IMAGE_DIMS: Record<string, { width: number; height: number }> = {
+  gimnasio: { width: 1536, height: 2730 },
+  pilates: { width: 941, height: 1672 },
+}
+
 const models = [
   {
     id: 'gimnasio',
@@ -132,6 +137,10 @@ export function BusinessModels() {
             <img
               src={`/${model.id}.webp`}
               alt={`Gymple para ${model.label.toLowerCase()}`}
+              width={MODEL_IMAGE_DIMS[model.id].width}
+              height={MODEL_IMAGE_DIMS[model.id].height}
+              loading="lazy"
+              decoding="async"
               className="h-auto w-full rounded-2xl"
             />
           </motion.div>

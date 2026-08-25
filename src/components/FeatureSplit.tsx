@@ -4,6 +4,11 @@ import { Reveal } from '@/components/ui/reveal'
 import { PillButton } from '@/components/ui/pill-button'
 import { cn } from '@/lib/utils'
 
+const IMAGE_DIMS: Record<string, { width: number; height: number }> = {
+  '/hero1.webp': { width: 1024, height: 1536 },
+  '/hero2.webp': { width: 1024, height: 1536 },
+}
+
 export type FeatureSplitProps = {
   eyebrow: string
   title: string
@@ -57,6 +62,10 @@ export function FeatureSplit({
           <img
             src={image}
             alt="Gymple - plataforma de gestión"
+            width={IMAGE_DIMS[image]?.width ?? 1024}
+            height={IMAGE_DIMS[image]?.height ?? 1536}
+            loading="lazy"
+            decoding="async"
             className="h-auto w-full rounded-2xl"
           />
         </div>

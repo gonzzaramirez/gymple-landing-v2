@@ -1,0 +1,216 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const SITE_URL = Astro.site?.toString() ?? "https://gymple.online";
+const year = new Date().getFullYear();
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: new URL("/", SITE_URL).toString() },
+    { "@type": "ListItem", position: 2, name: "Recursos", item: new URL("/recursos", SITE_URL).toString() },
+    { "@type": "ListItem", position: 3, name: "Calculadora de ROI", item: new URL("/recursos/calculadora-roi", SITE_URL).toString() },
+  ],
+};
+
+const faqSchema = [
+  {
+    question: "¿Cómo se calcula el ahorro de la calculadora?",
+    answer:
+      "Estimamos los ingresos recuperados aplicando una tasa de recuperación del 60% sobre la morosidad proyectada, y el ahorro de horas sumando las horas de administración semanales a un valor de $6.000 por hora. Son estimaciones, no una garantía.",
+  },
+  {
+    question: "¿El valor por hora de administración es fijo?",
+    answer:
+      "No. Usamos $6.000/h como referencia de un administrador de gimnasio en Argentina; podés ajustar la importancia del tiempo según tu realidad, pero la calculadora mantiene esa referencia para dar una cifra concreta.",
+  },
+];
+---
+
+<BaseLayout
+  title="Calculadora de ROI de membresías para gimnasios | Gymple"
+  description="Calculá cuánto ahorrás en horas de administración y cuánta morosidad recuperás con cobranza automática. Gratis, en pesos argentinos, sin dejar tus datos."
+  ogImage="/gimnasio.webp"
+  faqSchema={faqSchema}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="flex min-h-screen flex-col px-4 py-8 md:py-10">
+    <div class="mx-auto w-full max-w-3xl">
+      <header>
+        <a href="/" class="inline-flex items-center gap-2 font-heading text-lg font-extrabold text-foreground">
+          <img src="/logo.png" alt="Gymple" width={32} height={32} class="size-8 rounded-lg" />
+          Gymple
+        </a>
+      </header>
+
+      <main class="mt-8 rounded-[2rem] bg-secondary px-6 py-12 md:px-12">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm text-muted-foreground">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="transition-colors hover:text-foreground">Inicio</a></li>
+            <li aria-hidden="true" class="text-muted-foreground/60">/</li>
+            <li><a href="/recursos" class="transition-colors hover:text-foreground">Recursos</a></li>
+            <li aria-hidden="true" class="text-muted-foreground/60">/</li>
+            <li aria-current="page" class="text-foreground">Calculadora de ROI</li>
+          </ol>
+        </nav>
+
+        <h1 class="text-balance text-3xl font-extrabold md:text-4xl">Calculadora de ROI de membresías</h1>
+        <p class="mt-3 text-muted-foreground">
+          Poné los números de tu gimnasio y estimá cuánto recuperás en morosidad y cuánto ahorrás en
+          horas de administración con cobranza automática. Todo en pesos argentinos, sin dejar tus datos.
+        </p>
+
+        <div class="mt-8 grid gap-8 md:grid-cols-2">
+          <form id="roi-form" class="flex flex-col gap-4" novalidate>
+            <label class="flex flex-col gap-1.5 text-sm font-medium">
+              Nº de socios
+              <input
+                id="socios"
+                type="number"
+                min="0"
+                step="1"
+                value="120"
+                inputmode="numeric"
+                class="rounded-xl border border-border bg-card px-4 py-2.5 text-base outline-none focus:ring-2 focus:ring-ring"
+              />
+            </label>
+
+            <label class="flex flex-col gap-1.5 text-sm font-medium">
+              Cuota mensual (ARS)
+              <input
+                id="cuota"
+                type="number"
+                min="0"
+                step="1000"
+                value="18000"
+                inputmode="numeric"
+                class="rounded-xl border border-border bg-card px-4 py-2.5 text-base outline-none focus:ring-2 focus:ring-ring"
+              />
+            </label>
+
+            <label class="flex flex-col gap-1.5 text-sm font-medium">
+              % de morosidad
+              <input
+                id="morosidad"
+                type="number"
+                min="0"
+                max="100"
+                step="1"
+                value="12"
+                inputmode="decimal"
+                class="rounded-xl border border-border bg-card px-4 py-2.5 text-base outline-none focus:ring-2 focus:ring-ring"
+              />
+            </label>
+
+            <label class="flex flex-col gap-1.5 text-sm font-medium">
+              Horas de administración por semana
+              <input
+                id="horas"
+                type="number"
+                min="0"
+                step="0.5"
+                value="10"
+                inputmode="decimal"
+                class="rounded-xl border border-border bg-card px-4 py-2.5 text-base outline-none focus:ring-2 focus:ring-ring"
+              />
+            </label>
+
+            <p class="text-xs text-muted-foreground">
+              Asumimos 60% de recuperación de la morosidad y un valor de $6.000 por hora de administración.
+              Son estimaciones, no una garantía.
+            </p>
+          </form>
+
+          <div class="flex flex-col gap-3" aria-live="polite">
+            <div class="rounded-xl border border-border bg-card p-5">
+              <p class="text-sm text-muted-foreground">Ingresos recuperados / mes</p>
+              <p id="out-recuperado" class="mt-1 text-2xl font-extrabold text-primary">$0</p>
+              <p class="mt-1 text-xs text-muted-foreground">Morosidad proyectada al 60% de recuperación.</p>
+            </div>
+            <div class="rounded-xl border border-border bg-card p-5">
+              <p class="text-sm text-muted-foreground">Ahorro en administración / mes</p>
+              <p id="out-ahorro" class="mt-1 text-2xl font-extrabold text-primary">$0</p>
+              <p class="mt-1 text-xs text-muted-foreground">Horas administrativas × $6.000 × 4,3 semanas.</p>
+            </div>
+            <div class="rounded-xl bg-primary p-5 text-primary-foreground">
+              <p class="text-sm text-primary-foreground/75">Ahorro total estimado / mes</p>
+              <p id="out-total" class="mt-1 text-3xl font-extrabold">$0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-[1.5rem] bg-card p-6">
+          <h2 class="font-heading text-lg font-bold">¿Cómo lo leés?</h2>
+          <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+            La morosidad es plata que ya es tuya pero no entró. Con recordatorios automáticos por
+            WhatsApp y cobro recurrente, buena parte de esos socios paga antes de darse de baja. El
+            ahorro de horas es el tiempo que dejás de perder reconciliando Excel para ponerlo en
+            entrenar o vender. Las dos cifras juntas son el ROI de dejar de hacerlo a mano.
+          </p>
+          <a href="/" class="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
+            Ver cómo lo hace Gymple
+          </a>
+        </div>
+      </main>
+
+      <footer class="mt-8 flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
+        <p>© {year} Gymple. Todos los derechos reservados.</p>
+        <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+          <a href="/about" class="transition-colors hover:text-foreground">Sobre nosotros</a>
+          <a href="/contact" class="transition-colors hover:text-foreground">Contacto</a>
+          <a href="/privacy" class="transition-colors hover:text-foreground">Privacidad</a>
+        </nav>
+      </footer>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const fmt = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    maximumFractionDigits: 0,
+  });
+
+  const $ = (id: string) => document.getElementById(id) as HTMLInputElement | null;
+  const socios = $("socios");
+  const cuota = $("cuota");
+  const morosidad = $("morosidad");
+  const horas = $("horas");
+  const outRecuperado = $("out-recuperado");
+  const outAhorro = $("out-ahorro");
+  const outTotal = $("out-total");
+
+  const RECOVERY_RATE = 0.6;
+  const VALOR_HORA = 6000;
+  const SEMANAS = 4.3;
+
+  function num(el: HTMLInputElement | null): number {
+    const v = parseFloat(el?.value ?? "0");
+    return Number.isFinite(v) && v > 0 ? v : 0;
+  }
+
+  function calcular() {
+    const s = num(socios);
+    const c = num(cuota);
+    const m = Math.min(Math.max(num(morosidad), 0), 100);
+    const h = num(horas);
+
+    const ingresosMensuales = s * c;
+    const baseMorosidad = ingresosMensuales * (m / 100);
+    const recuperado = baseMorosidad * RECOVERY_RATE;
+    const ahorro = h * VALOR_HORA * SEMANAS;
+    const total = recuperado + ahorro;
+
+    if (outRecuperado) outRecuperado.textContent = fmt.format(recuperado);
+    if (outAhorro) outAhorro.textContent = fmt.format(ahorro);
+    if (outTotal) outTotal.textContent = fmt.format(total);
+  }
+
+  [socios, cuota, morosidad, horas].forEach((el) => {
+    el?.addEventListener("input", calcular);
+  });
+  calcular();
+</script>

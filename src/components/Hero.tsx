@@ -90,6 +90,9 @@ export function Hero() {
             <img
                 src="/hero.webp"
               alt="Gymple"
+              width={1536}
+              height={1024}
+              decoding="async"
               className="relative h-auto w-full"
             />
           </motion.div>

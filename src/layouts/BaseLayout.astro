@@ -16,10 +16,12 @@ const {
   title = "Gymple — El software que automatiza tu gimnasio",
   description = "Sistema de gestión para centros de entrenamiento: control de clientes, membresías, asistencia y finanzas. Hecho en Argentina, fácil de usar, en la nube.",
   keywords = "software para gimnasios Argentina, sistema de gestión gimnasios, programa para administrar gimnasios, control de clientes gimnasio, software fácil de usar, gestión centros de entrenamiento, membresías y finanzas, sistema en la nube Argentina, software barato para gimnasios, administración gimnasios moderna",
-  ogImage = "/og-image.jpg",
+  ogImage = "/hero.webp",
   robots = "index, follow",
   faqSchema = [],
 } = Astro.props;
+
+const isHome = Astro.url.pathname === "/";
 
 const canonicalUrl = Astro.site
   ? new URL(Astro.url.pathname, Astro.site).toString()
@@ -37,11 +39,6 @@ const softwareSchema = {
     price: "0",
     priceCurrency: "ARS",
     description: "14 días de prueba gratis",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    ratingCount: "7",
   },
 };
 
@@ -66,19 +63,6 @@ const orgSchema = {
     contactType: "sales",
     availableLanguage: ["es"],
   },
-};
-
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Gymple",
-  description: "Software de gestión para gimnasios en Argentina",
-  url: SITE_URL,
-  email: "gonza37754@gmail.com",
-  areaServed: "AR",
-  sameAs: [
-    "https://instagram.com/gymple.app",
-  ],
 };
 
 const faqJsonLd =
@@ -128,6 +112,9 @@ const faqJsonLd =
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, SITE_URL).toString()} />
+    <meta property="og:image:width" content="1536" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content="Gymple — software de gestión para gimnasios" />
     <meta property="og:locale" content="es_AR" />
     <meta property="og:site_name" content="Gymple" />
 
@@ -137,6 +124,7 @@ const faqJsonLd =
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, SITE_URL).toString()} />
+    <meta name="twitter:image:alt" content="Gymple — software de gestión para gimnasios" />
 
     <!-- Fonts: Plus Jakarta Sans via Google CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -150,9 +138,8 @@ const faqJsonLd =
     <meta name="theme-color" content="#16432b" />
     <meta name="color-scheme" content="light" />
 
-    <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+    {isHome && <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />}
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
     {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
     <meta name="google-site-verification" content="KSP7aUv3j1gBJbmgGzGxbDvcKct9QP4hmjiF0rKY4TU" />
   </head>

@@ -1,0 +1,165 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const SITE_URL = Astro.site?.toString() ?? "https://gymple.online";
+const year = new Date().getFullYear();
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: new URL("/", SITE_URL).toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Recursos",
+      item: new URL("/recursos", SITE_URL).toString(),
+    },
+  ],
+};
+
+const clusters = [
+  {
+    title: "Guías para dueños de gimnasio",
+    description:
+      "Cómo administrar tu gimnasio, organizar la cobranza y dejar de depender de Excel. Lectura práctica, no humo.",
+    href: "/recursos/como-administrar-un-gimnasio",
+    cta: "Leer guías",
+  },
+  {
+    title: "Comparativas de software",
+    description:
+      "Análisis honestos de las opciones del mercado argentino, con el costo en USD y la realidad de la AFIP sobre la mesa.",
+    href: "/recursos/mejor-software-gimnasios-argentina-2026",
+    cta: "Ver comparativa",
+  },
+  {
+    title: "Verticales por ciudad",
+    description:
+      "Software para CrossFit y entrenamiento funcional en CABA, Córdoba y Rosario. Copia y contexto local real.",
+    href: "/recursos/software-crossfit-caba",
+    cta: "Explorar verticales",
+  },
+  {
+    title: "Calculadora de ROI",
+    description:
+      "Calculá cuánto ahorrás en horas de administración y cuánta morosidad recuperás con cobranza automática.",
+    href: "/recursos/calculadora-roi",
+    cta: "Abrir calculadora",
+  },
+];
+
+const guides = [
+  {
+    title: "Cómo administrar un gimnasio",
+    href: "/recursos/como-administrar-un-gimnasio",
+    note: "Guía · procesos y cobranza",
+  },
+  {
+    title: "Por qué tu gimnasio necesita un sistema de gestión (y no alcanza con Excel)",
+    href: "/recursos/por-que-sistema-gestion-vs-excel",
+    note: "Guía · Excel vs sistema",
+  },
+  {
+    title: "Mejor software para gimnasios en Argentina 2026",
+    href: "/recursos/mejor-software-gimnasios-argentina-2026",
+    note: "Comparativa · mercado AR",
+  },
+];
+---
+
+<BaseLayout
+  title="Recursos para dueños de gimnasio | Gymple"
+  description="Guías, comparativas y herramientas para administrar tu gimnasio en Argentina: cobranza, asistencia, morosidad y software. Hecho por Gymple."
+  ogImage="/gimnasio.webp"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="flex min-h-screen flex-col px-4 py-8 md:py-10">
+    <div class="mx-auto w-full max-w-3xl">
+      <header>
+        <a href="/" class="inline-flex items-center gap-2 font-heading text-lg font-extrabold text-foreground">
+          <img src="/logo.png" alt="Gymple" width={32} height={32} class="size-8 rounded-lg" />
+          Gymple
+        </a>
+      </header>
+
+      <main class="mt-8 rounded-[2rem] bg-secondary px-6 py-12 md:px-12">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm text-muted-foreground">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="transition-colors hover:text-foreground">Inicio</a></li>
+            <li aria-hidden="true" class="text-muted-foreground/60">/</li>
+            <li aria-current="page" class="text-foreground">Recursos</li>
+          </ol>
+        </nav>
+
+        <h1 class="text-balance text-3xl font-extrabold md:text-4xl">Recursos para dueños de gimnasio</h1>
+        <p class="mt-3 max-w-xl text-muted-foreground">
+          Sin relleno. Material práctico para cobrar mejor, controlar la asistencia y dejar de perder
+          socios por desorganización. Todo pensado para la realidad argentina.
+        </p>
+
+        <section class="mt-10 grid gap-4 sm:grid-cols-2" aria-label="Clusters de contenido">
+          {
+            clusters.map((c) => (
+              <a
+                href={c.href}
+                class="group flex flex-col rounded-[1.5rem] border border-border bg-card p-6 transition-colors hover:border-primary/40"
+              >
+                <h2 class="font-heading text-lg font-bold">{c.title}</h2>
+                <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{c.description}</p>
+                <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                  {c.cta}
+                  <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
+                </span>
+              </a>
+            ))
+          }
+        </section>
+
+        <section class="mt-12" aria-label="Últimas publicaciones">
+          <h2 class="font-heading text-xl font-bold">Últimas publicaciones</h2>
+          <ul class="mt-4 divide-y divide-border border-y border-border">
+            {
+              guides.map((g) => (
+                <li>
+                  <a href={g.href} class="flex flex-col gap-1 py-4 transition-colors hover:text-primary">
+                    <span class="font-semibold">{g.title}</span>
+                    <span class="text-sm text-muted-foreground">{g.note}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="mt-12 rounded-[1.5rem] bg-primary px-6 py-8 text-center text-primary-foreground">
+          <h2 class="text-balance text-xl font-extrabold">Probá Gymple gratis 14 días</h2>
+          <p class="mt-2 text-primary-foreground/75">
+            Cobranza automática, asistencia y finanzas en un solo lugar. Hecho en Argentina.
+          </p>
+          <a
+            href="/"
+            class="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-semibold text-accent-foreground"
+          >
+            Conocer Gymple
+          </a>
+        </section>
+      </main>
+
+      <footer class="mt-8 flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
+        <p>© {year} Gymple. Todos los derechos reservados.</p>
+        <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+          <a href="/about" class="transition-colors hover:text-foreground">Sobre nosotros</a>
+          <a href="/contact" class="transition-colors hover:text-foreground">Contacto</a>
+          <a href="/privacy" class="transition-colors hover:text-foreground">Privacidad</a>
+        </nav>
+      </footer>
+    </div>
+  </div>
+</BaseLayout>

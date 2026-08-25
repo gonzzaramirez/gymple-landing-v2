@@ -8,6 +8,35 @@ export interface Props {
 
 const { title, description } = Astro.props;
 
+const SITE_URL = Astro.site?.toString() ?? "https://gymple.online";
+const pathname = Astro.url.pathname;
+
+const labelMap: Record<string, string> = {
+  "/about": "Sobre nosotros",
+  "/contact": "Contacto",
+  "/privacy": "Privacidad",
+};
+const currentLabel = labelMap[pathname] ?? title;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: new URL("/", SITE_URL).toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: currentLabel,
+      item: new URL(pathname, SITE_URL).toString(),
+    },
+  ],
+};
+
 const year = new Date().getFullYear();
 
 const navLinks = [
@@ -32,6 +61,14 @@ const navLinks = [
       </header>
 
       <main class="mt-8 rounded-[2rem] bg-secondary px-6 py-12 md:px-12">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm text-muted-foreground">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="transition-colors hover:text-foreground">Inicio</a></li>
+            <li aria-hidden="true" class="text-muted-foreground/60">/</li>
+            <li aria-current="page" class="text-foreground">{currentLabel}</li>
+          </ol>
+        </nav>
+        <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
         <slot />
       </main>
 
