@@ -29,6 +29,7 @@ export function PillButton({
       if (!el || !magnetic) return
       // Skip magnetic pull on touch / coarse pointers
       if (window.matchMedia('(pointer: coarse)').matches) return
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
       const xTo = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3.out' })
       const yTo = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3.out' })

@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 
 const phrases = [
   'Sin Excel',
@@ -11,12 +11,13 @@ const phrases = [
 ]
 
 export function Marquee() {
+  const reduceMotion = useReducedMotion()
   const items = [...phrases, ...phrases]
   return (
     <section aria-hidden className="overflow-hidden py-10">
       <motion.div
         className="flex w-max gap-6"
-        animate={{ x: ['0%', '-50%'] }}
+        animate={reduceMotion ? undefined : { x: ['0%', '-50%'] }}
         transition={{ duration: 22, ease: 'linear', repeat: Infinity }}
       >
         {items.map((p, i) => (

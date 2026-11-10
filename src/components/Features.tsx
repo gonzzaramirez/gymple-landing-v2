@@ -1,5 +1,6 @@
 import { Reveal } from '@/components/ui/reveal'
 import { PillButton } from '@/components/ui/pill-button'
+import { BorderBeamCard, BorderBeamCardContent } from '@/components/ui/border-beam-card'
 
 const features = [
   {
@@ -36,16 +37,29 @@ export function Features() {
       </div>
 
       <div className="mt-12 grid gap-4 md:grid-cols-3">
-        {features.map((f, i) => (
-          <Reveal key={f.n} delay={i}>
-            <article className="group flex h-full flex-col rounded-3xl bg-primary p-7 text-primary-foreground transition-transform duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-bold">{f.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
-                {f.desc}
-              </p>
-            </article>
-          </Reveal>
-        ))}
+        {features.map((f, i) =>
+          i === 1 ? (
+            <Reveal key={f.n} delay={i} className="h-full">
+              <BorderBeamCard beamSize="md" className="h-full">
+                <BorderBeamCardContent className="flex h-full flex-col bg-primary p-7 text-primary-foreground">
+                  <h3 className="text-xl font-bold">{f.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                    {f.desc}
+                  </p>
+                </BorderBeamCardContent>
+              </BorderBeamCard>
+            </Reveal>
+          ) : (
+            <Reveal key={f.n} delay={i}>
+              <article className="group flex h-full flex-col rounded-3xl bg-primary p-7 text-primary-foreground transition-transform duration-300 hover:-translate-y-1">
+                <h3 className="text-xl font-bold">{f.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                  {f.desc}
+                </p>
+              </article>
+            </Reveal>
+          ),
+        )}
       </div>
     </section>
   )

@@ -1,12 +1,9 @@
 'use client'
 
-import { useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
+import { useEffect, useRef, useState } from 'react'
+import { useInView } from 'motion/react'
 import { Reveal } from '@/components/ui/reveal'
-
-gsap.registerPlugin(ScrollTrigger, useGSAP)
+import { RollingNumber } from '@/components/ui/rolling-number'
 
 type Stat = {
   prefix?: string
@@ -25,26 +22,6 @@ const stats: Stat[] = [
 
 export function Stats() {
   const root = useRef<HTMLDivElement>(null)
-
-  useGSAP(
-    () => {
-      const nums = gsap.utils.toArray<HTMLElement>('[data-count]')
-      nums.forEach((el) => {
-        const target = Number(el.dataset.count)
-        const obj = { val: 0 }
-        gsap.to(obj, {
-          val: target,
-          duration: 1.6,
-          ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-          onUpdate: () => {
-            el.textContent = Math.round(obj.val).toString()
-          },
-        })
-      })
-    },
-    { scope: root },
-  )
 
   return (
     <section id="resultados" className="px-4 py-10 md:py-16">
@@ -67,7 +44,7 @@ export function Stats() {
                   ) : (
                     <>
                       {s.prefix}
-                      <span data-count={s.to}>0</span>
+                      <StatNumber value={s.to} />
                       {s.suffix}
                     </>
                   )}
@@ -81,5 +58,30 @@ export function Stats() {
         </div>
       </div>
     </section>
+  )
+}
+
+function StatNumber({ value }: { value: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-15% 0px' })
+  const [reduced, setReduced] = useState(false)
+  const [started, setStarted] = useState(false)
+
+  useEffect(() => {
+    setReduced(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  }, [])
+
+  useEffect(() => {
+    if (inView && !reduced) setStarted(true)
+  }, [inView, reduced])
+
+  return (
+    <span ref={ref}>
+      {reduced || !started ? (
+        value
+      ) : (
+        <RollingNumber value={value} />
+      )}
+    </span>
   )
 }

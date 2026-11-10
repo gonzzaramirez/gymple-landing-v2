@@ -21,10 +21,11 @@ const groups = [
     title: 'Empresa',
     links: [
       { label: 'Contacto', href: '#contacto' },
+      { label: 'Ver demo', href: 'https://demo.gymple.online/dashboard' },
       { label: 'Sobre nosotros', href: '/about' },
-      { label: 'WhatsApp', href: 'https://wa.me/543775439981' },
+      { label: 'WhatsApp', href: 'https://wa.me/543775439981?text=Hola%20quiero%20mas%20informacion%20sobre%20gymple!' },
       { label: 'Instagram', href: 'https://www.instagram.com/gymple.app/' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gonzzaramirez/?skipRedirect=true' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gonzzaramirez/' },
       { label: 'Privacidad', href: '/privacy' },
     ],
   },

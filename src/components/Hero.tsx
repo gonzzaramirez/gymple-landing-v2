@@ -78,23 +78,32 @@ export function Hero() {
 
           </div>
 
-          {/* hero image — hidden on mobile */}
+          {/* hero image — demo real */}
           <motion.div
             ref={parallaxRef}
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease, delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="relative"
           >
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-accent/20 to-accent/5 blur-2xl" />
             <img
-                src="/hero.webp"
-              alt="Gymple"
-              width={1536}
-              height={1024}
+              src="/demo-dashboard-hero.png"
+              alt="Panel de Gymple con socios, cuotas y flujo de caja del demo real"
+              width={1366}
+              height={900}
+              loading="eager"
               decoding="async"
-              className="relative h-auto w-full"
+              className="relative h-auto w-full rounded-2xl ring-1 ring-primary-foreground/20"
             />
+            <a
+              href="https://demo.gymple.online/dashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-4 left-4 rounded-full bg-primary-foreground/90 px-4 py-2 text-xs font-semibold text-primary backdrop-blur transition-colors hover:bg-primary-foreground"
+            >
+              Ver demo en vivo
+            </a>
           </motion.div>
         </div>
       </div>
