@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 const MODEL_IMAGE_DIMS: Record<string, { width: number; height: number }> = {
   gimnasio: { width: 1536, height: 2730 },
   pilates: { width: 941, height: 1672 },
+  agenda: { width: 941, height: 1672 },
 }
 
 const models = [
@@ -72,11 +73,14 @@ export function BusinessModels() {
         </p>
       </Reveal>
 
-      <div className="mt-5 flex flex-wrap justify-center gap-2">
+      <div className="mt-5 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Modelos de negocio">
         {models.map((m, i) => (
           <button
             key={m.id}
             type="button"
+            role="tab"
+            aria-selected={i === active}
+            aria-pressed={i === active}
             onClick={() => setActive(i)}
             className={cn(
               'flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all',
@@ -137,8 +141,8 @@ export function BusinessModels() {
             <img
               src={`/${model.id}.webp`}
               alt={`Gymple para ${model.label.toLowerCase()}`}
-              width={MODEL_IMAGE_DIMS[model.id].width}
-              height={MODEL_IMAGE_DIMS[model.id].height}
+              width={(MODEL_IMAGE_DIMS[model.id] ?? { width: 1080, height: 1350 }).width}
+              height={(MODEL_IMAGE_DIMS[model.id] ?? { width: 1080, height: 1350 }).height}
               loading="lazy"
               decoding="async"
               className="h-auto w-full rounded-2xl"

@@ -34,6 +34,7 @@ export function ClientsCarousel() {
     () => {
       const track = trackRef.current
       if (!track) return
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
       const tween = gsap.to(track, {
         xPercent: -50,
@@ -82,6 +83,8 @@ export function ClientsCarousel() {
               href={igUrl(c.ig)}
               target="_blank"
               rel="noopener noreferrer"
+              aria-hidden={i >= clients.length ? true : undefined}
+              tabIndex={i >= clients.length ? -1 : undefined}
               className="flex w-64 shrink-0 items-center gap-4 rounded-2xl bg-card p-2 pr-5 ring-1 ring-border transition-shadow hover:shadow-lg hover:shadow-black/5"
             >
               <img

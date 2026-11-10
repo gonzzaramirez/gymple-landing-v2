@@ -28,10 +28,12 @@ export function Stats() {
 
   useGSAP(
     () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
       const nums = gsap.utils.toArray<HTMLElement>('[data-count]')
       nums.forEach((el) => {
         const target = Number(el.dataset.count)
         const obj = { val: 0 }
+        el.textContent = '0'
         gsap.to(obj, {
           val: target,
           duration: 1.6,
@@ -67,7 +69,7 @@ export function Stats() {
                   ) : (
                     <>
                       {s.prefix}
-                      <span data-count={s.to}>0</span>
+                      <span data-count={s.to}>{s.to}</span>
                       {s.suffix}
                     </>
                   )}

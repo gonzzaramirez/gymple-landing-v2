@@ -8,7 +8,8 @@ export function PlatformSection() {
         eyebrow="Control total"
         title="Tu negocio en una sola pantalla"
         description="Planes flexibles, precios congelados, convenios corporativos, rutinas digitales. Todo lo que pasa en tu gimnasio, ordenado y a un clic."
-        image="/hero1.webp"
+        image="/demo-dashboard.png"
+        imageAlt="Dashboard real de Gymple con flujo de caja, cuotas al día, vencidas y asistencias"
         bullets={[
           { icon: CalendarCheck, text: 'Planes a medida: mensuales, trimestrales, personalizados' },
           { icon: BarChart3, text: 'Precios congelados: lo que pactás se respeta siempre, aunque después subas' },
@@ -22,6 +23,7 @@ export function PlatformSection() {
         title="Cada persona en su lugar"
         description="Dueños, administradores, entrenadores y clientes. Cada uno accede a lo que necesita y nada más. Sin riesgo de que alguien vea lo que no debe."
         image="/hero2.webp"
+        imageAlt="Vista de roles y accesos por perfil en Gymple"
         bullets={[
           { icon: Bell, text: 'Administradores: ven finanzas, clientes, reportes y configuración' },
           { icon: UserX, text: 'Entrenadores: solo asistencias, rutinas y sus alumnos' },

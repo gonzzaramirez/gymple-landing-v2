@@ -60,7 +60,9 @@ export function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <a
-            href="#contacto"
+            href="https://demo.gymple.online/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
           >
             Ingresar
@@ -96,6 +98,14 @@ export function Navbar() {
           <PillButton href="#contacto" className="mt-3 w-full justify-center">
             Probar gratis
           </PillButton>
+          <a
+            href="https://demo.gymple.online/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 block rounded-xl px-4 py-3 text-center text-sm font-medium text-foreground hover:bg-secondary"
+          >
+            Ingresar a la demo
+          </a>
         </div>
       )}
     </header>

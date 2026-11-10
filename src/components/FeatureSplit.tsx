@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils'
 const IMAGE_DIMS: Record<string, { width: number; height: number }> = {
   '/hero1.webp': { width: 1024, height: 1536 },
   '/hero2.webp': { width: 1024, height: 1536 },
+  '/demo-dashboard.png': { width: 1366, height: 2048 },
+  '/demo-dashboard-hero.png': { width: 1366, height: 900 },
 }
 
 export type FeatureSplitProps = {
@@ -16,6 +18,7 @@ export type FeatureSplitProps = {
   bullets: { icon: LucideIcon; text: string }[]
   reverse?: boolean
   image?: string
+  imageAlt?: string
 }
 
 export function FeatureSplit({
@@ -25,6 +28,7 @@ export function FeatureSplit({
   bullets,
   reverse = false,
   image = "/hero2.webp",
+  imageAlt = "Gymple - plataforma de gestión",
 }: FeatureSplitProps) {
   return (
     <section className="mx-auto max-w-6xl px-4 py-8 md:py-12">
@@ -61,12 +65,12 @@ export function FeatureSplit({
         <div className={cn(reverse && 'lg:order-1')}>
           <img
             src={image}
-            alt="Gymple - plataforma de gestión"
+            alt={imageAlt}
             width={IMAGE_DIMS[image]?.width ?? 1024}
             height={IMAGE_DIMS[image]?.height ?? 1536}
             loading="lazy"
             decoding="async"
-            className="h-auto w-full rounded-2xl"
+            className="h-auto w-full rounded-2xl ring-1 ring-border"
           />
         </div>
       </div>

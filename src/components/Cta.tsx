@@ -22,11 +22,16 @@ export function Cta() {
           </Reveal>
           <Reveal delay={2}>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <PillButton href="#" variant="accent">
+              <PillButton
+                href="https://wa.me/543775439981?text=Hola%20quiero%20mas%20informacion%20sobre%20gymple!"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="accent"
+              >
                 Probar gratis 14 días
               </PillButton>
               <a
-                href="https://wa.me/543775439981"
+                href="https://wa.me/543775439981?text=Hola%20quiero%20mas%20informacion%20sobre%20gymple!"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-5 py-2.5 text-sm font-semibold ring-1 ring-primary-foreground/15 transition-colors hover:bg-primary-foreground/20"
