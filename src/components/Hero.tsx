@@ -6,6 +6,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { PillButton } from '@/components/ui/pill-button'
+import { BrowserFrame } from '@/components/ui/browser-frame'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -78,7 +79,7 @@ export function Hero() {
 
           </div>
 
-          {/* hero image — demo real */}
+          {/* hero visual — demo real en marco premium */}
           <motion.div
             ref={parallaxRef}
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -86,24 +87,42 @@ export function Hero() {
             transition={{ duration: 0.8, ease, delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-accent/20 to-accent/5 blur-2xl" />
-            <img
+            <BrowserFrame
               src="/demo-dashboard-hero.png"
               alt="Panel de Gymple con socios, cuotas y flujo de caja del demo real"
-              width={1366}
-              height={900}
-              loading="eager"
-              decoding="async"
-              className="relative h-auto w-full rounded-2xl ring-1 ring-primary-foreground/20"
+              url="demo.gymple.online/dashboard"
+              eager
+              imgClassName="aspect-[16/10]"
             />
-            <a
+            <motion.a
               href="https://demo.gymple.online/dashboard"
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute bottom-4 left-4 rounded-full bg-primary-foreground/90 px-4 py-2 text-xs font-semibold text-primary backdrop-blur transition-colors hover:bg-primary-foreground"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease, delay: 0.6 }}
+              className="absolute -bottom-4 left-4 rounded-full bg-accent px-4 py-2 text-xs font-bold text-accent-foreground shadow-lg transition-transform hover:-translate-y-0.5"
             >
               Ver demo en vivo
-            </a>
+            </motion.a>
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease, delay: 0.7 }}
+              className="absolute -top-4 right-4 rounded-2xl bg-primary-foreground/95 px-4 py-2 text-primary shadow-xl backdrop-blur"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-wide opacity-70">Neto mes</p>
+              <p className="text-lg font-extrabold tabular-nums">$80k</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease, delay: 0.8 }}
+              className="absolute -left-3 top-1/2 hidden -translate-y-1/2 rounded-2xl bg-primary-foreground/95 px-4 py-2 text-primary shadow-xl backdrop-blur sm:block"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-wide opacity-70">Cuotas al día</p>
+              <p className="text-lg font-extrabold tabular-nums">+6 ✓</p>
+            </motion.div>
           </motion.div>
         </div>
       </div>
