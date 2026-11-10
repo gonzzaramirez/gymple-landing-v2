@@ -19,10 +19,11 @@ Alcance autorizado: leer demo y landing, agregar capturas en `public/`, editar c
 - [x] T4 (S2, inline): Fix Navbar Ingresar + Cta href + WhatsApp consistente
 - [x] T5 (S1+S2, inline): Hero con captura real + PlatformSection imágenes
 - [x] T6 (S2, inline): Carousel/Marquee a11y + reduced-motion
-- [ ] T7 (S4, inline): Build/test + commit + push feature branch
+- [x] T7 (S4, inline): Build/test + commit + push feature branch
 
 ## Log
 
 L1 (2026-11-10): "entra a https://demo.gymple.online/dashboard y saca las capturas que quieras. y mejora todo y audita todo e implementa todo en el repo de la landing PS C:\\Users\\Gonza\\Desktop\\gymple-landing-v2> despues comitea y pushea"
 L2: Branch feat/landing-audit-ux-fixes creada desde main limpio. Auditoría: BusinessModels sin dims para agenda crashea al clickear Agenda y desmonta #modelos (nav roto aparente); Stats pinta 0 inicial; Cta Probar gratis href="#"; Ingresar lleva a #contacto; faltan capturas reales en hero.
 L3: Build OK 5.56s, 12/12 tests pass. dist contiene demo-dashboard-hero.png x1, demo-dashboard.png x1, demo.gymple.online x3, href="#" x0.
+L4: Commit 9dfc808 en feat/landing-audit-ux-fixes pusheado a origin. T1-T7 verificadas.
